@@ -1,0 +1,292 @@
+{
+    "admin": {
+        "nguoiDung": [
+            {
+                "id": 1,
+                "tenDangNhap": "admin",
+                "matKhau": "hashed_password",
+                "vaiTro": "admin",
+                "hoSo": {
+                    "email": "admin@example.com",
+                    "soDienThoai": "0123456789",
+                    "diaChi": "123 Admin St."
+                }
+            }
+        ],
+        "danhMuc": [
+            {
+                "id": 1,
+                "ten": "Laptop văn phòng",
+                "moTa": "Các dòng laptop phục vụ công việc văn phòng"
+            },
+            {
+                "id": 2,
+                "ten": "Laptop gaming",
+                "moTa": "Các dòng laptop phục vụ chơi game"
+            },
+            {
+                "id": 3,
+                "ten": "Laptop đồ họa",
+                "moTa": "Laptop cho thiết kế và đồ họa chuyên nghiệp"
+            },
+            {
+                "id": 4,
+                "ten": "Laptop phổ thông",
+                "moTa": "Laptop giá rẻ cho nhu cầu phổ thông"
+            }
+        ],
+        "laptop": [
+            {
+                "id": 1,
+                "ten": "Laptop Dell XPS 13",
+                "moTa": "Laptop cao cấp từ Dell",
+                "gia": 20000000,
+                "hinhAnh": "url/to/dell-xps-13.png",
+                "danhMuc": "Laptop văn phòng",
+                "soLuongTonKho": 50,
+                "danhGia": 4.5,
+                "cpu": "Intel Core i7",
+                "ram": "16GB",
+                "cardDoHoa": "NVIDIA GTX 1650",
+                "trongLuong": "1.2kg",
+                "thoiLuongPin": "12 giờ",
+                "khoangGia": "20,000,000 - 25,000,000 VND"
+            },
+            {
+                "id": 2,
+                "ten": "Laptop HP Pavilion",
+                "moTa": "Laptop tầm trung từ HP",
+                "gia": 15000000,
+                "hinhAnh": "url/to/hp-pavilion.png",
+                "danhMuc": "Laptop phổ thông",
+                "soLuongTonKho": 30,
+                "danhGia": 5,
+                "cpu": "AMD Ryzen 5",
+                "ram": "8GB",
+                "cardDoHoa": "AMD Radeon Vega 8",
+                "trongLuong": "1.5kg",
+                "thoiLuongPin": "10 giờ",
+                "khoangGia": "10,000,000 - 15,000,000 VND"
+            }
+        ],
+        "donHang": [
+            {
+                "id": 1,
+                "nguoiDungId": 2,
+                "laptop": [
+                    {
+                        "laptopId": 1,
+                        "soLuong": 2,
+                        "gia": 20000000
+                    }
+                ],
+                "trangThai": "giao hàng thành công",
+                "tongTien": 40000000,
+                "ngayDatHang": "2023-09-21",
+                "phuongThucThanhToan": "Thanh toán khi nhận hàng",
+                "thongTinVanChuyen": {
+                    "tenNguoiNhan": "Nguyễn Văn A",
+                    "soDienThoai": "0987654321",
+                    "diaChi": "456 User St."
+                }
+            },
+            {
+                "id": 2,
+                "nguoiDungId": 3,
+                "laptop": [
+                    {
+                        "laptopId": 2,
+                        "soLuong": 1,
+                        "gia": 15000000
+                    }
+                ],
+                "trangThai": "đang xử lý",
+                "tongTien": 15000000,
+                "ngayDatHang": "2023-09-22",
+                "phuongThucThanhToan": "Chuyển khoản ngân hàng",
+                "thongTinVanChuyen": {
+                    "tenNguoiNhan": "Trần Thị B",
+                    "soDienThoai": "0901234567",
+                    "diaChi": "789 User St."
+                }
+            }
+        ],
+        "thongKe": {
+            "doanhSoNgay": [
+                {
+                    "ngay": "2023-09-21",
+                    "tongDoanhSo": 50000000
+                },
+                {
+                    "ngay": "2023-09-22",
+                    "tongDoanhSo": 15000000
+                }
+            ],
+            "doanhSoThang": [
+                {
+                    "thang": "Tháng 9 2023",
+                    "tongDoanhSo": 150000000
+                }
+            ]
+        },
+        "lienHe": [
+            {
+                "id": 1,
+                "nguoiDungId": 2,
+                "tinNhan": "Bạn có thể cung cấp thêm chi tiết về sản phẩm Dell XPS 13?",
+                "ngay": "2023-09-21"
+            }
+        ],
+        "khuyenMai": [
+            {
+                "id": 1,
+                "ten": "Khuyến mãi laptop",
+                "moTa": "Giảm 20% trên các sản phẩm laptop",
+                "ngayBatDau": "2024-01-01",
+                "ngayKetThuc": "2024-01-07",
+                "giaTriKhuyenMai": 20,
+                "laptop": [
+                    1,
+                    2
+                ]
+            }
+        ],
+        "tonKho": [
+            {
+                "laptopId": 1,
+                "soLuongTonKho": 50
+            },
+            {
+                "laptopId": 2,
+                "soLuongTonKho": 30
+            }
+        ]
+    },
+    "nguoiDung": {
+        "nguoiDung": [
+            {
+                "id": 2,
+                "tenDangNhap": "user1",
+                "matKhau": "hashed_password",
+                "vaiTro": "nguoiDung",
+                "hoSo": {
+                    "email": "user1@example.com",
+                    "soDienThoai": "0987654321",
+                    "diaChi": "456 User St."
+                },
+                "lichSuDonHang": [
+                    {
+                        "donHangId": 1,
+                        "laptop": [
+                            {
+                                "laptopId": 1,
+                                "ten": "Laptop Dell XPS 13",
+                                "soLuong": 2,
+                                "gia": 20000000
+                            }
+                        ],
+                        "trangThai": "giao hàng thành công",
+                        "tongTien": 40000000,
+                        "ngayDatHang": "2023-09-21"
+                    }
+                ],
+                "sanPhamYeuThich": [
+                    1
+                ]
+            }
+        ],
+        "laptop": [
+            {
+                "id": 1,
+                "ten": "Laptop Dell XPS 13",
+                "moTa": "Laptop cao cấp từ Dell",
+                "gia": 20000000,
+                "danhMuc": "Laptop văn phòng",
+                "soLuongTonKho": 50,
+                "danhGia": 4.5,
+                "cpu": "Intel Core i7",
+                "ram": "16GB",
+                "cardDoHoa": "NVIDIA GTX 1650",
+                "hinhAnh": "url/to/dell-xps-13.png",
+                "danhGiaChiTiet": [
+                    {
+                        "nguoiDungId": 2,
+                        "binhLuan": "Sản phẩm tốt",
+                        "danhGia": 4
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "ten": "Laptop HP Pavilion",
+                "moTa": "Laptop tầm trung từ HP",
+                "gia": 15000000,
+                "danhMuc": "Laptop phổ thông",
+                "soLuongTonKho": 30,
+                "danhGia": 5,
+                "cpu": "AMD Ryzen 5",
+                "ram": "8GB",
+                "cardDoHoa": "AMD Radeon Vega 8",
+                "hinhAnh": "url/to/hp-pavilion.png",
+                "danhGiaChiTiet": []
+            }
+        ],
+        "danhGia": [
+            {
+                "id": 1,
+                "laptopId": 1,
+                "nguoiDungId": 2,
+                "danhGia": 4,
+                "binhLuan": "Sản phẩm tốt",
+                "ngay": "2023-09-21"
+            }
+        ],
+        "gioHang": [
+            {
+                "nguoiDungId": 2,
+                "laptop": [
+                    {
+                        "laptopId": 1,
+                        "soLuong": 1,
+                        "gia": 20000000
+                    }
+                ],
+                "tongTien": 20000000,
+                "ngayCapNhat": "2023-09-21"
+            }
+        ],
+        "danhSachYeuThich": [
+            {
+                "nguoiDungId": 2,
+                "laptop": [
+                    2
+                ]
+            }
+        ],
+        "donHang": [
+            {
+                "id": 1,
+                "nguoiDungId": 2,
+                "laptop": [
+                    {
+                        "laptopId": 1,
+                        "soLuong": 2,
+                        "gia": 20000000
+                    }
+                ],
+                "trangThai": "giao hàng thành công",
+                "tongTien": 40000000,
+                "ngayDatHang": "2023-09-21",
+                "phuongThucThanhToan": "Thanh toán khi nhận hàng"
+            }
+        ],
+        "thongBao": [
+            {
+                "nguoiDungId": 2,
+                "thongDiep": "Đơn hàng của bạn đã được giao",
+                "ngay": "2023-09-21",
+                "daDoc": false
+            }
+        ]
+    }
+}
