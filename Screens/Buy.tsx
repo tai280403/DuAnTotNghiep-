@@ -24,17 +24,17 @@ const ProductScreen = () => {
             {/* Header */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => { /* Back navigation logic */ }}>
-                    <Image source={require('../assets/BackButton.png')} style={styles.icon} />
+                    <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/heart.png')} style={styles.iconHeart} />
+                    <Image source={require('../acssets/Vector.png')} style={styles.iconHeart} />
                 </TouchableOpacity>
             </View>
 
             <ScrollView contentContainerStyle={styles.contentContainer}>
                 {/* Product Image */}
                 <Image
-                    source={require('../assets/Asus1.png')} // Ảnh sản phẩm
+                    source={require('../acssets/Asus1.png')} // Ảnh sản phẩm
                     style={styles.productImage}
                 />
 
@@ -65,7 +65,7 @@ const ProductScreen = () => {
 
                         {/* Share Icon */}
                         <TouchableOpacity style={styles.shareButton}>
-                            <Image source={require('../assets/Share.png')} style={styles.iconShare} />
+                            <Image source={require('../acssets/sharearrow.png')} style={styles.iconShare} />
                         </TouchableOpacity>
                     </View>
 
@@ -107,16 +107,16 @@ const ProductScreen = () => {
             {/* Bottom Navigation */}
             <View style={styles.bottomNavigation}>
                 <TouchableOpacity>
-                    <Image source={require('../assets/home.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/home.png')} style={styles.iconNav} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/BasketIcon.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/BasketIcon.png')} style={styles.iconNav} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/heart.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/Vector.png')} style={styles.iconNav} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/profile.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/profile.png')} style={styles.iconNav} />
                 </TouchableOpacity>
             </View>
         </View>
