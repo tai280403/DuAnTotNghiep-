@@ -7,14 +7,16 @@ const FindScreen = () => {
             {/* Header */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../assets/Back Button.png')} style={styles.icon} />
+                    <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
+
+
                 </TouchableOpacity>
                 <Text style={styles.headerText}>Find Products</Text>
             </View>
 
             {/* Search Bar */}
             <View style={styles.searchContainer}>
-                <Image source={require('../assets/Findicon.png')} style={styles.icon} />
+                <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
                 <TextInput
                     style={styles.searchInput}
                     placeholder="Asus..."
@@ -30,23 +32,23 @@ const FindScreen = () => {
                     {/* Product 1 */}
                     <TouchableOpacity style={styles.productItem} activeOpacity={0.7}>
                         <Image
-                            source={require('../assets/acer 2.png')} // Ảnh sản phẩm 1
+                            source={require('../acssets/acer2.png')} // Ảnh sản phẩm 1
                             style={styles.productImage}
                         />
                         <Text style={styles.productName}>Pink Hoodie</Text>
                         <Text style={styles.productPrice}>$668.00 USD</Text>
-                        <Image source={require('../assets/heart.png')} style={styles.iconHeart} />
+                        <Image source={require('../acssets/Vector.png')} style={styles.iconHeart} />
                     </TouchableOpacity>
 
                     {/* Product 2 */}
                     <TouchableOpacity style={styles.productItem} activeOpacity={0.7}>
                         <Image
-                            source={require('../assets/HP 2.png')} // Ảnh sản phẩm 2
+                            source={require('../acssets/Asus1.png')} // Ảnh sản phẩm 2
                             style={styles.productImage}
                         />
                         <Text style={styles.productName}>Light Purple Hoodie</Text>
                         <Text style={styles.productPrice}>$584.00 USD</Text>
-                        <Image source={require('../assets/heart.png')} style={styles.iconHeart} />
+                        <Image source={require('../acssets/Vector.png')} style={styles.iconHeart} />
                     </TouchableOpacity>
                 </View>
 
@@ -54,23 +56,23 @@ const FindScreen = () => {
                     {/* Product 3 */}
                     <TouchableOpacity style={styles.productItem} activeOpacity={0.7}>
                         <Image
-                            source={require('../assets/Asus 1.png')} // Ảnh sản phẩm 3
+                            source={require('../acssets/Asus1.png')} // Ảnh sản phẩm 3
                             style={styles.productImage}
                         />
                         <Text style={styles.productName}>Dark Green Hoodie</Text>
                         <Text style={styles.productPrice}>$980.00 USD</Text>
-                        <Image source={require('../assets/heart.png')} style={styles.iconHeart} />
+                        <Image source={require('../acssets/Vector.png')} style={styles.iconHeart} />
                     </TouchableOpacity>
 
                     {/* Product 4 */}
                     <TouchableOpacity style={styles.productItem} activeOpacity={0.7}>
                         <Image
-                            source={require('../assets/acer 2.png')} // Ảnh sản phẩm 4
+                            source={require('../acssets/acer2.png')} // Ảnh sản phẩm 4
                             style={styles.productImage}
                         />
                         <Text style={styles.productName}>Turquoise Hoodie</Text>
                         <Text style={styles.productPrice}>$668.00 USD</Text>
-                        <Image source={require('../assets/heart.png')} style={styles.iconHeart} />
+                        <Image source={require('../acssets/Vector.png')} style={styles.iconHeart} />
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -78,13 +80,16 @@ const FindScreen = () => {
             {/* Bottom Navigation */}
             <View style={styles.bottomNavigation}>
                 <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../assets/home.png')} style={styles.icon} />
+                    <Image source={require('../acssets/home.png')} style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../assets/Basket Icon.png')} style={styles.icon} />
+                    <Image source={require('../acssets/BasketIcon.png')} style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../assets/heart.png')} style={styles.icon} />
+                    <Image source={require('../acssets/Vector.png')} style={styles.icon} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
+                    <Image source={require('../acssets/profile.png')} style={styles.icon} />
                 </TouchableOpacity>
             </View>
         </View>
