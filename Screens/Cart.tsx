@@ -3,10 +3,10 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'rea
 
 const CartScreen = () => {
     const [cartItems, setCartItems] = useState([
-        { id: 1, name: 'Printed Shirt', price: 858, quantity: 1, image: require('../assets/acer2.png') },
-        { id: 2, name: 'Leather Jacket', price: 736, quantity: 1, image: require('../assets/Asus1.png') },
-        { id: 3, name: 'Washed Jeans', price: 949, quantity: 1, image: require('../assets/HP2.png') },
-        { id: 4, name: 'Printed Shirt', price: 858, quantity: 1, image: require('../assets/acer2.png') },
+        { id: 1, name: 'Printed Shirt', price: 858, quantity: 1, image: require('../acssets/acer2.png') },
+        { id: 2, name: 'Leather Jacket', price: 736, quantity: 1, image: require('../acssets/Asus1.png') },
+        { id: 3, name: 'Washed Jeans', price: 949, quantity: 1, image: require('../acssets/HP2.png') },
+        { id: 4, name: 'Printed Shirt', price: 858, quantity: 1, image: require('../acssets/acer2.png') },
     ]);
 
     const handleIncreaseQuantity = (id) => {
@@ -38,7 +38,7 @@ const CartScreen = () => {
             {/* Header */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => { /* Back navigation logic */ }}>
-                    <Image source={require('../assets/BackButton.png')} style={styles.icon} />
+                    <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.headerText}>My Cart</Text>
             </View>
@@ -80,16 +80,16 @@ const CartScreen = () => {
             {/* Bottom Navigation */}
             <View style={styles.bottomNavigation}>
                 <TouchableOpacity>
-                    <Image source={require('../assets/home.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/home.png')} style={styles.iconNav} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/BasketIcon.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/BasketIcon.png')} style={styles.iconNav} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/heart.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/Vector.png')} style={styles.iconNav} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Image source={require('../assets/profile.png')} style={styles.iconNav} />
+                    <Image source={require('../acssets/profile.png')} style={styles.iconNav} />
                 </TouchableOpacity>
             </View>
         </View>
