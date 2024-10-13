@@ -7,7 +7,7 @@ const FindScreen = () => {
             {/* Header */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
+                    <Image source={require('../acssets/BackButton.png')}  />
 
 
                 </TouchableOpacity>
@@ -16,7 +16,7 @@ const FindScreen = () => {
 
             {/* Search Bar */}
             <View style={styles.searchContainer}>
-                <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
+                <Image source={require('../acssets/SearchIcon.png')} style={styles.findicon} />
                 <TextInput
                     style={styles.searchInput}
                     placeholder="Asus..."
@@ -180,6 +180,14 @@ const styles = StyleSheet.create({
     icon: {
         width: 24,
         height: 24,
+    },
+    findicon: {
+        width: 14,
+        height: 14,
+    },
+    Backicon: {
+        width: 20,
+        height: 20,
     },
 });
 

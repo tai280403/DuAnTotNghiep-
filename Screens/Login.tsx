@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ImageBackground 
@@ -34,11 +36,11 @@ const Login = () => {
         </TouchableOpacity>
       </View>
       
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.loginButtonText}>SIGN IN</Text>
       </TouchableOpacity>
       
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text style={styles.createAccount}>Not registered yet? Create an Account</Text>
       </TouchableOpacity>
       </View>
