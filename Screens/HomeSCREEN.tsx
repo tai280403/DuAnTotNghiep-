@@ -40,17 +40,19 @@ const HomeScreen = () => {
       <ScrollView style={styles.productScrollView}>
         <View style={styles.productList}>
           {/* Product 1 */}
-          <View style={styles.product}>
+          <View style={styles.product} >
+            <TouchableOpacity onPress={() => navigation.navigate('Buy')}>
             <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
             <Text style={styles.productName}>HP</Text>
             <Text style={styles.productPrice}>$750.00 USD</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.heartIconContainer}>
               <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
             </TouchableOpacity>
           </View>
 
           {/* Product 2 */}
-          <View style={styles.product}>
+          <View style={styles.product} >
             <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
             <Text style={styles.productName}>Asus</Text>
             <Text style={styles.productPrice}>$668.00 USD</Text>

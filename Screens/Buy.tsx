@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
 const ProductScreen = () => {
-    const [size, setSize] = useState('S');
     const [quantity, setQuantity] = useState(1);
-
-    const handleSizePress = (selectedSize) => {
-        setSize(selectedSize);
-    };
 
     const handleIncreaseQuantity = () => {
         setQuantity(quantity + 1);
@@ -76,25 +71,6 @@ const ProductScreen = () => {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry...
                             <Text style={styles.detailLink}>detail</Text>
                         </Text>
-                    </View>
-
-                    {/* Size Selector */}
-                    <View style={styles.sizeSelector}>
-                        <Text style={styles.sectionTitle}>SELECT SIZE</Text>
-                        <View style={styles.sizeOptions}>
-                            {['S', 'M', 'L', 'XL', 'XXL'].map((item) => (
-                                <TouchableOpacity
-                                    key={item}
-                                    style={[
-                                        styles.sizeOption,
-                                        size === item && styles.sizeSelected,
-                                    ]}
-                                    onPress={() => handleSizePress(item)}
-                                >
-                                    <Text style={styles.sizeText}>{item}</Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
                     </View>
 
                     {/* Add to Cart Button */}
@@ -219,11 +195,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f7fb',
         borderRadius: 50,
         padding: 12,
+        
     },
     iconShare: {
         width: 24,
         height: 24,
-        tintColor: '#4A90E2',
+        left:6
+        
     },
     descriptionContainer: {
         marginBottom: 16,
@@ -238,30 +216,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#888',
         lineHeight: 20,
-    },
-    sizeSelector: {
-        marginBottom: 16,
-    },
-    sizeOptions: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    sizeOption: {
-        width: 48,
-        height: 48,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: '#ddd',
-        borderRadius: 12,
-    },
-    sizeSelected: {
-        backgroundColor: '#4A90E2',
-        borderColor: '#4A90E2',
-    },
-    sizeText: {
-        color: '#333',
-        fontSize: 16,
     },
     addToCartButton: {
         backgroundColor: '#4A90E2',
