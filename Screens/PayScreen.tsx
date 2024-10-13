@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
 const PaymentScreen = () => {
     const navigation = useNavigation();
-  return (
+  
+    return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -45,7 +47,10 @@ const PaymentScreen = () => {
 
       {/* Add All to Cart Button */}
       <View style={styles.bottomButtonContainer}>
-        <TouchableOpacity style={styles.addToCartButton}  onPress={() => navigation.navigate('Checkout')}>
+        <TouchableOpacity 
+          style={styles.addToCartButton}  
+          onPress={() => navigation.navigate('Checkout')}
+        >
           <Text style={styles.addToCartText}>ADD ALL TO CART</Text>
         </TouchableOpacity>
       </View>
@@ -123,6 +128,10 @@ const styles = StyleSheet.create({
   },
 
   bottomButtonContainer: {
+    position: 'absolute',
+    bottom: 80, // Để nút nằm phía trên bottom navigation
+    left: 0,
+    right: 0,
     padding: 16,
     backgroundColor: '#fff',
   },

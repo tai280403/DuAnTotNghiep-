@@ -83,20 +83,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.bottomNavigation}>
-        <TouchableOpacity>
-          <Image source={require('../acssets/home.png')} style={styles.iconNav} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../acssets/BasketIcon.png')} style={styles.iconNav} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../acssets/Vector.png')} style={styles.iconNav} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../acssets/profile.png')} style={styles.iconNav} />
-        </TouchableOpacity>
-      </View>
+
     </View>
   );
 };
