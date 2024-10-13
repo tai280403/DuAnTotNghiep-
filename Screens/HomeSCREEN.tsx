@@ -1,170 +1,175 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native"; // Sử dụng các thành phần từ React Native
-import { FontAwesome } from '@expo/vector-icons'; // Sử dụng icon từ react-native-vector-icons
+import React from 'react';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const ProductList = () => {
-  const products = [
-    { name: "HP", price: 750.0, imageUrl: "path-to-hp-image", currency: "USD" },
-    { name: "Asus", price: 668.0, imageUrl: "path-to-asus-image", currency: "USD" },
-    { name: "Acer", price: 599.0, imageUrl: "path-to-acer-image", currency: "USD" },
-  ];
-
+const HomeScreen = () => {
   return (
-    <View style={styles.productListContainer}>
-      {/* Header Section */}
-      <View style={styles.productListHeader}>
-        <View style={styles.userProfile}>
-          <FontAwesome name="user" size={28} />
-        </View>
-        <View style={styles.icons}>
-          <FontAwesome name="bell" size={20} style={styles.icon} />
-          <FontAwesome name="search" size={20} style={styles.icon} />
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Image source={require('../acssets/profile1.png')} style={styles.profileImage} />
+        <View style={styles.headerIcons}>
+          <Image source={require('../acssets/bell.png')} style={styles.icon} />
+          <Image source={require('../acssets/SearchIcon.png')} style={styles.icon} />
+          <Image source={require('../acssets/Menu2.png')} style={styles.icon} />
         </View>
       </View>
-
-      {/* Category Tabs */}
-      <View style={styles.categoryTabs}>
-        <Text style={styles.activeTab}>Popular</Text>
-        <Text style={styles.tab}>Trending</Text>
-        <Text style={styles.tab}>News</Text>
-        <Text style={styles.tab}>Sale</Text>
+      <View style={styles.categories}>
+        <Text style={styles.category}>Popular</Text>
+        <Text style={styles.category}>Trending</Text>
+        <Text style={styles.category}>News</Text>
+        <Text style={styles.category}>Sale</Text>
       </View>
-
-      {/* Filter and Sort Section */}
       <View style={styles.filterSort}>
-        <Text>FILTER & SORT</Text>
-        <FontAwesome name="search" size={16} />
+        <Text style={styles.filterSortText}>FILTER & SORT</Text>
+        <Image source={require('../acssets/sorttool.png')} style={styles.icon} />
       </View>
-
-      {/* Product Grid */}
-      <View style={styles.productGrid}>
-        {products.map((product, index) => (
-          <View key={index} style={styles.productCard}>
-            <Image source={{ uri: product.imageUrl }} style={styles.productImage} />
-            <View style={styles.productInfo}>
-              <Text>{product.name}</Text>
-              <Text>{`${product.price.toFixed(2)} ${product.currency}`}</Text>
-            </View>
-            <TouchableOpacity style={styles.favoriteIcon}>
-              <FontAwesome name="heart" size={20} />
-            </TouchableOpacity>
-          </View>
-        ))}
+      <View style={styles.productList}>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop1.png')} style={styles.productImage} />
+          <Text style={styles.productName}>HP</Text>
+          <Text style={styles.productPrice}>$750.00 USD</Text>
+        </View>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop2.png')} style={styles.productImage} />
+          <Text style={styles.productName}>Asus</Text>
+          <Text style={styles.productPrice}>$668.00 USD</Text>
+        </View>
       </View>
-
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity>
-          <FontAwesome name="search" size={24} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesome name="shopping-cart" size={24} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesome name="user" size={24} style={styles.icon} />
-        </TouchableOpacity>
+      <View style={styles.productList}>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop1.png')} style={styles.productImage} />
+          <Text style={styles.productName}>HP</Text>
+          <Text style={styles.productPrice}>$750.00 USD</Text>
+        </View>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop2.png')} style={styles.productImage} />
+          <Text style={styles.productName}>Asus</Text>
+          <Text style={styles.productPrice}>$668.00 USD</Text>
+        </View>
       </View>
-    </View>
+      <View style={styles.productList}>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop1.png')} style={styles.productImage} />
+          <Text style={styles.productName}>HP</Text>
+          <Text style={styles.productPrice}>$750.00 USD</Text>
+        </View>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop2.png')} style={styles.productImage} />
+          <Text style={styles.productName}>Asus</Text>
+          <Text style={styles.productPrice}>$668.00 USD</Text>
+        </View>
+      </View>
+      <View style={styles.productList}>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop1.png')} style={styles.productImage} />
+          <Text style={styles.productName}>HP</Text>
+          <Text style={styles.productPrice}>$750.00 USD</Text>
+        </View>
+        <View style={styles.product}>
+          <Image source={require('../acssets/laptop2.png')} style={styles.productImage} />
+          <Text style={styles.productName}>Asus</Text>
+          <Text style={styles.productPrice}>$668.00 USD</Text>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
-// Styles using JavaScript Object Notation (JSX inline styles)
-const styles = {
-  productListContainer: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#f7f7f7',
-  },
-  productListHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+function WishlistScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Wishlist</Text>
+    </View>
+  );
+}
+
+function ProfileScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Profile</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused }) => {
+            let iconSource;
+
+            if (route.name === 'Home') {
+              iconSource = focused
+                ? require('../acssets/home.png')
+                : require('../acssets/home.png');
+            } else if (route.name === 'Wishlist') {
+              iconSource = focused
+                ? require('../acssets/Vectoricon.png')
+                : require('../acssets/Vectoricon.png');
+            } else if (route.name === 'Profile') {
+              iconSource = focused
+                ? require('../acssets/profile.png')
+                : require('../acssets/profile.png');
+            }
+
+            return <Image source={iconSource} style={styles.tabIcon} />;
+          },
+          tabBarLabel: () => null,  // Ẩn nhãn tab
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray',
+          tabBarStyle: {
+            backgroundColor: '#fce4ec',
+            borderTopLeftRadius: 25,
+            borderTopRightRadius: 25,
+            paddingBottom: 10,
+            height: 60,
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}  // Ẩn thanh tiêu đề
+        />
+        <Tab.Screen
+          name="Wishlist"
+          component={WishlistScreen}
+          options={{ headerShown: false }}  // Ẩn thanh tiêu đề
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ headerShown: false }}  // Ẩn thanh tiêu đề
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#fff' },
+  header: { flexDirection: 'row', justifyContent: 'space-between', padding: 16 },
+  profileImage: { width: 40, height: 40, borderRadius: 20 },
+  headerIcons: { flexDirection: 'row' },
+  icon: { width: 24, height: 24, marginLeft: 16 },
+  categories: { flexDirection: 'row', justifyContent: 'space-around', paddingVertical: 16 },
+  category: { fontSize: 16, fontWeight: 'bold' },
+  filterSort: { flexDirection: 'row', justifyContent: 'space-between', padding: 16 },
+  filterSortText: { fontSize: 16, fontWeight: 'bold' },
+  productList: { flexDirection: 'row', justifyContent: 'space-around', padding: 16 },
+  product: {
     alignItems: 'center',
-    padding: 10,
-  },
-  userProfile: {
-    width: 40,
-    height: 40,
+    backgroundColor: '#E0E0E0',
     borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: '40%',
+    height: 200,
   },
-  icons: {
-    flexDirection: 'row',
-    gap: 15,
-  },
-  icon: {
-    cursor: 'pointer',
-    color: '#555',
-  },
-  categoryTabs: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 20,
-    fontSize: 14,
-  },
-  tab: {
-    paddingVertical: 10,
-    cursor: 'pointer',
-  },
-  activeTab: {
-    color: '#303f9f',
-    fontWeight: 'bold',
-    borderBottomWidth: 2,
-    borderBottomColor: '#303f9f',
-    paddingVertical: 10,
-  },
-  filterSort: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: 15,
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#666',
-  },
-  productGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom :90,
-    justifyContent: 'space-between',
-  },
-  productCard: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 10,
-    width: '48%',
-    marginBottom: 20,
-    position: 'relative',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 1.5,
-  },
-  productImage: {
-    width: '100%',
-    height: 150,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  productInfo: {
-    marginBottom: 10,
-  },
-  favoriteIcon: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    color: '#ff6f61',
-    cursor: 'pointer',
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 15,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-  },
-};
-
-export default ProductList;
-
+  productImage: { width: 100, height: 100 },
+  productName: { fontSize: 16, fontWeight: 'bold', marginTop: 8 },
+  productPrice: { fontSize: 14, color: '#888' },
+  tabIcon: { width: 24, height: 24 },
+});
