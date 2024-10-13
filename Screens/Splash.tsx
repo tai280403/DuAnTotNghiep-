@@ -1,35 +1,37 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 
 const Splash = () => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('./Ảnh chụp màn hình 2024-10-10 140956.png')} // Đặt đường dẫn tới hình nền của bạn
-        style={styles.background}
-      >
-        <View style={styles.logoContainer}>
-          {/* Thay thế văn bản bằng hình ảnh logo */}
-          <Image
-            source={require('./Ảnh chụp màn hình 2024-10-10 142544.png')} // Đặt đường dẫn tới logo của bạn
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          <Text style={styles.subtitle}>Buy laptops easily at LapStore</Text>
-        </View>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-          <Icon name="arrow-forward" size={20} color="#fff" />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Register</Text>
-          <Icon name="arrow-forward" size={20} color="#fff" />
-        </TouchableOpacity>
-      </ImageBackground>
-    </View>
+    <ImageBackground 
+      source={require('../acssets/hinhnen1.png')} // Đảm bảo rằng bạn đã lưu ảnh nền trong thư mục đúng
+      style={styles.container}
+      resizeMode="cover" // Chọn cách hiển thị ảnh nền
+    >
+    
+      
+      {/* Logo Image */}
+      <Image 
+        source={require('../acssets/hinhanhlogo.png')} // Đảm bảo rằng bạn đã xuất logo từ Figma và đặt tại đường dẫn này
+        style={styles.logo}
+        resizeMode="contain" // Giữ tỷ lệ khung hình cho logo
+      />
+      
+      {/* Slogan */}
+      <Text style={styles.slogan}>Buy laptops easily </Text>
+      <Text style={styles.slogan}>at LapStore</Text>
+      
+      {/* Login Button */}
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.buttonText}>Login     ➔</Text>
+      </TouchableOpacity>
+      
+      {/* Register Button */}
+      <TouchableOpacity style={styles.registerButton}>
+        <Text style={styles.buttonText}>Register</Text>
+        <Text style={styles.buttonText}> ➔</Text>
+      </TouchableOpacity>
+    </ImageBackground>
   );
 };
 
@@ -39,42 +41,45 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  background: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginBottom: 40,
-  },
   logo: {
-    width: 150,
-    height: 150, // Kích thước hình ảnh logo
+    width: 400,  // Thay đổi kích thước logo
+    height: 350, // Cân đối với chiều cao
+
   },
-  subtitle: {
-    fontSize: 16,
-    color: 'gray',
-    marginTop: 10,
-  },
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#000',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 10,
+  slogan: {
+    fontSize: 26,
+    textAlign: 'center',
+    color: '#000',
     marginBottom: 20,
-    width: '80%',
+  },
+  loginButton: {
+    backgroundColor: '#000',
+    paddingVertical: 10,
+    paddingHorizontal: 60,
+    borderRadius: 25,
+    borderWidth: 1,
+    width :200,
+    marginBottom: 20,
+    
+    alignContent :'space-between',
+  },
+  registerButton: {
+    backgroundColor: '#000',
+    borderWidth: 1,
+    borderColor: '#fff',
+    paddingVertical: 10,
+    flexDirection: 'row', // Đặt các nút trên cùng một hàng
+    justifyContent: 'space-around', // Căn giữa các nút
+    width: '50%', // Chiều rộng tổng thể cho button container
+    paddingHorizontal: 60,
+    borderRadius: 25,
+    marginBottom : 100,
   },
   buttonText: {
-    color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    color: '#fff',
+    
   },
 });
 
-export default Splash ;
+export default Splash;
