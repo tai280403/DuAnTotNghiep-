@@ -18,6 +18,15 @@ import PayScreen from './Screens/PayScreen';
 import CheckoutScreen from './Screens/Checkout';
 import HelpScreen from './Screens/HelpScreen';
 import CustomDrawerContent from './Screens/CustomDrawerContent';
+<<<<<<< HEAD
+import AccountManagement from './Screens/Accountmanagement';
+import PictureScreen from './Screens/PictureScreen';
+import CommentScreen from './Screens/CommentScreen';
+
+=======
+import ForgotPasswordScreen from './Screens/ForgotPasswordScreen'; 
+>>>>>>> 423a5524949d65bc27fded17efdc5ad8ab045fb1
+
 
 // Import component Bottom Navigation
 import BottomNavigation from './components/bottomnavigation'; // Đảm bảo đường dẫn đúng
@@ -43,6 +52,14 @@ const App = () => {
           <Stack.Screen name="Checkout" component={CheckoutScreen} />
           <Stack.Screen name="HelpScreen" component={HelpScreen} />
           <Stack.Screen name="CustomDrawerContent" component={CustomDrawerContent} />
+<<<<<<< HEAD
+          <Stack.Screen name="Accountmanagement" component={AccountManagement} />
+          <Stack.Screen name="PictureScreen" component={PictureScreen} />
+          <Stack.Screen name="CommentScreen" component={CommentScreen} />
+
+=======
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+>>>>>>> 423a5524949d65bc27fded17efdc5ad8ab045fb1
         </Stack.Navigator>
 
         {/* Bottom Navigation */}
