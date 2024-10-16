@@ -18,6 +18,8 @@ import PayScreen from './Screens/PayScreen';
 import CheckoutScreen from './Screens/Checkout';
 import HelpScreen from './Screens/HelpScreen';
 import CustomDrawerContent from './Screens/CustomDrawerContent';
+import ForgotPasswordScreen from './Screens/ForgotPasswordScreen'; 
+
 
 // Import component Bottom Navigation
 import BottomNavigation from './components/bottomnavigation'; // Đảm bảo đường dẫn đúng
@@ -43,6 +45,7 @@ const App = () => {
           <Stack.Screen name="Checkout" component={CheckoutScreen} />
           <Stack.Screen name="HelpScreen" component={HelpScreen} />
           <Stack.Screen name="CustomDrawerContent" component={CustomDrawerContent} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         </Stack.Navigator>
 
         {/* Bottom Navigation */}
