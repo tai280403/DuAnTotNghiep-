@@ -78,20 +78,7 @@ const FindScreen = () => {
             </ScrollView>
 
             {/* Bottom Navigation */}
-            <View style={styles.bottomNavigation}>
-                <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../acssets/home.png')} style={styles.icon} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../acssets/BasketIcon.png')} style={styles.icon} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../acssets/Vector.png')} style={styles.icon} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { /* navigation logic */ }} activeOpacity={0.7}>
-                    <Image source={require('../acssets/profile.png')} style={styles.icon} />
-                </TouchableOpacity>
-            </View>
+
         </View>
     );
 };
@@ -169,14 +156,7 @@ const styles = StyleSheet.create({
         top: 10,
         right: 10,
     },
-    bottomNavigation: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingVertical: 16,
-        paddingHorizontal: 30,
-        backgroundColor: '#f1f1f1',
-        borderRadius: 30,
-    },
+
     icon: {
         width: 24,
         height: 24,
