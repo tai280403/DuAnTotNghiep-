@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { NavigationContainer, useNavigationState } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainerRef } from '@react-navigation/native';
 
 // Import các màn hình
 import FindScreen from './Screens/Find';
@@ -27,10 +28,17 @@ import BottomNavigation from './components/bottomnavigation'; // Đảm bảo đ
 
 const Stack = createStackNavigator();
 
-const AppNavigator = () => {
-  const currentRouteName = useNavigationState((state) =>
-    state.routes[state.index] ? state.routes[state.index].name : 'Splash'
-  );
+const AppNavigator = ({ navigationRef }) => {
+  const [currentRouteName, setCurrentRouteName] = useState('Splash');
+
+  useEffect(() => {
+    const unsubscribe = navigationRef.current?.addListener('state', () => {
+      const currentRoute = navigationRef.current?.getCurrentRoute();
+      setCurrentRouteName(currentRoute?.name || 'Splash');
+    });
+
+    return unsubscribe;
+  }, [navigationRef]);
 
   return (
     <View style={styles.container}>
@@ -63,9 +71,11 @@ const AppNavigator = () => {
 };
 
 const App = () => {
+  const navigationRef = useRef<NavigationContainerRef>(null);
+
   return (
-    <NavigationContainer>
-      <AppNavigator />
+    <NavigationContainer ref={navigationRef}>
+      <AppNavigator navigationRef={navigationRef} />
     </NavigationContainer>
   );
 };
