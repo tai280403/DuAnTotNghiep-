@@ -5,27 +5,27 @@ const ProfileScreen = () => {
   return (
     <View style={styles.container}>
       
-      {/* Header with Back Arrow and Title */}
+      
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Image source={require('../acssets/back.png')} style={styles.backIcon} />
+        <TouchableOpacity style={styles.backButton}>
+          <Image source={require('./assets/images/back.png')} style={styles.backIcon} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Chi tiết hồ sơ</Text>
       </View>
 
-      {/* Profile Section */}
+      
       <View style={styles.profileContainer}>
-        <Image source={require('../acssets/hihi.png')} style={styles.profileImage} />
+        <Image source={require('./assets/images/hihi.png')} style={styles.profileImage} />
         <Text style={styles.profileName}>NGUYỄN VĂN ADMIN</Text>
         <Text style={styles.profileId}>ID: 0336394558</Text>
       </View>
 
-      {/* Editable Fields */}
+      
       <View style={styles.fieldContainer}>
         
-        {/* Email Field */}
+       
         <View style={styles.fieldRow}>
-          <Image source={require('../acssets/profile.png')} style={styles.fieldIcon} />
+          <Image source={require('./assets/images/profile.png')} style={styles.fieldIcon} />
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.fieldInput}
@@ -33,14 +33,14 @@ const ProfileScreen = () => {
               editable={false}
             />
             <TouchableOpacity style={styles.editButton}>
-              <Image source={require('../acssets/but.png')} style={styles.editIcon} />
+              <Image source={require('./assets/images/but.png')} style={styles.editIcon} />
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Password Field */}
+       
         <View style={styles.fieldRow}>
-          <Image source={require('../acssets/profile.png')} style={styles.fieldIcon} />
+          <Image source={require('./assets/images/profile.png')} style={styles.fieldIcon} />
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.fieldInput}
@@ -49,14 +49,14 @@ const ProfileScreen = () => {
               editable={false}
             />
             <TouchableOpacity style={styles.editButton}>
-              <Image source={require('../acssets/but.png')} style={styles.editIcon} />
+              <Image source={require('./assets/images/but.png')} style={styles.editIcon} />
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Phone Number Field */}
+       
         <View style={styles.fieldRow}>
-          <Image source={require('../acssets/profile.png')} style={styles.fieldIcon} />
+          <Image source={require('./assets/images/profile.png')} style={styles.fieldIcon} />
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.fieldInput}
@@ -64,13 +64,13 @@ const ProfileScreen = () => {
               editable={false}
             />
             <TouchableOpacity style={styles.editButton}>
-              <Image source={require('../acssets/but.png')} style={styles.editIcon} />
+              <Image source={require('./assets/images/but.png')} style={styles.editIcon} />
             </TouchableOpacity>
           </View>
         </View>
       </View>
 
-      {/* Sign Out Button placed inside the blue section */}
+      
       <TouchableOpacity style={styles.signOutButton}>
         <Text style={styles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
@@ -89,42 +89,51 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',  
     marginBottom: 20,
+    position: 'relative',     
+    paddingTop: 10,            
+  },
+  backButton: {
+    position: 'absolute',      
+    left: 0,                   
   },
   backIcon: {
-    width: 24,
-    height: 24,
+    width: 30,                
+    height: 30,
     marginRight: 10,
   },
   headerTitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center',       
+    flex: 1,                   
   },
   profileContainer: {
     backgroundColor: '#A7D5FF',
     alignItems: 'center',
-    paddingVertical: 20,
-    borderRadius: 10,
+    paddingVertical: 30, 
+    borderRadius: 20,    
     marginBottom: 20,
   },
   profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 100,                
+    height: 100,
+    borderRadius: 50,
     marginBottom: 10,
   },
   profileName: {
-    fontSize: 18,
+    fontSize: 20,              
     fontWeight: 'bold',
     color: '#333',
   },
   profileId: {
-    fontSize: 14,
+    fontSize: 16,              
     color: '#555',
   },
   fieldContainer: {
     backgroundColor: '#A7D5FF',
-    borderRadius: 10,
+    borderRadius: 20,          
     padding: 20,
   },
   fieldRow: {
@@ -133,8 +142,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   fieldIcon: {
-    width: 24,
-    height: 24,
+    width: 30,                 
+    height: 30,
     marginRight: 10,
   },
   inputContainer: {
@@ -142,18 +151,18 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   fieldInput: {
-    padding: 10,
+    padding: 15,              
     backgroundColor: '#FFF',
-    borderRadius: 5,
+    borderRadius: 10,          
     borderWidth: 1,
     borderColor: '#DDD',
-    paddingRight: 40, // Space for the icon
+    paddingRight: 50,         
   },
   editButton: {
     position: 'absolute',
-    right: 10, // Aligns the icon to the right side of the input
+    right: 10,                
     top: '50%',
-    transform: [{ translateY: -12 }], // Center the icon vertically
+    transform: [{ translateY: -12 }], 
   },
   editIcon: {
     width: 24,
@@ -164,11 +173,11 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 30,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 40,           
   },
   signOutText: {
     color: '#FFF',
-    fontSize: 16,
+    fontSize: 18,             
     fontWeight: 'bold',
   },
 });
