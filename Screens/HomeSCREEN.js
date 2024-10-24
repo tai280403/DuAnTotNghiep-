@@ -16,19 +16,19 @@ const HomeScreen = () => {
     // Define different API links for each category
     switch (category) {
       case 'Popular':
-        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
         break;
       case 'Trending':
-        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
         break;
       case 'News':
-        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
         break;
       case 'Sale':
-        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
         break;
       default:
-        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
     }
 
     axios
