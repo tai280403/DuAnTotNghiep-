@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+/**
+ * @format
+ */
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+import {AppRegistry} from 'react-native';
+import App from './App';
+import {name as appName} from './app.json';
 
-module.exports = router;
+AppRegistry.registerComponent(appName, () => App);
