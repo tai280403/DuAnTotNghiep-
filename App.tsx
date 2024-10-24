@@ -23,8 +23,10 @@ import PictureScreen from './Screens/PictureScreen';
 import CommentScreen from './Screens/CommentScreen';
 import ForgotPasswordScreen from './Screens/ForgotPasswordScreen';
 
+
 // Import component Bottom Navigation
 import BottomNavigation from './components/bottomnavigation'; // Đảm bảo đường dẫn đúng
+import ProductScreen from './Screens/Buy';
 
 const Stack = createStackNavigator();
 
@@ -60,6 +62,7 @@ const AppNavigator = ({ navigationRef }) => {
         <Stack.Screen name="PictureScreen" component={PictureScreen} />
         <Stack.Screen name="CommentScreen" component={CommentScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <Stack.Screen name="ProductScreen" component={ProductScreen} />
       </Stack.Navigator>
 
       {/* Chỉ hiển thị Bottom Navigation khi không phải các màn hình Splash, Login, Register */}
