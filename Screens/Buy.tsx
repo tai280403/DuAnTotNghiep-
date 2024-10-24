@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
 const ProductScreen = () => {
+    const route = useRoute();
+    const { product } = route.params; // Access product data from route params
+
     const [quantity, setQuantity] = useState(1);
 
     const handleIncreaseQuantity = () => {
@@ -28,16 +32,13 @@ const ProductScreen = () => {
 
             <ScrollView contentContainerStyle={styles.contentContainer}>
                 {/* Product Image */}
-                <Image
-                    source={require('../acssets/Asus1.png')} // Ảnh sản phẩm
-                    style={styles.productImage}
-                />
+                <Image source={{ uri: product.Img }} style={styles.productImage} />
 
                 {/* Product Info */}
                 <View style={styles.productInfo}>
-                    <Text style={styles.productTitle}>Geeta Mens</Text>
-                    <Text style={styles.productName}>Asus Vivobook</Text>
-                    <Text style={styles.productPrice}>$698.00 USD</Text>
+                    <Text style={styles.productTitle}>{product.HangSX}</Text>
+                    <Text style={styles.productName}>{product.TenSP}</Text>
+                    <Text style={styles.productPrice}>${product.Gia} USD</Text>
 
                     {/* Rating */}
                     <View style={styles.rating}>
@@ -67,10 +68,7 @@ const ProductScreen = () => {
                     {/* Description */}
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.sectionTitle}>DESCRIPTION</Text>
-                        <Text style={styles.descriptionText}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry...
-                            <Text style={styles.detailLink}>detail</Text>
-                        </Text>
+                        <Text style={styles.descriptionText}>{product.MoTa}</Text>
                     </View>
 
                     {/* Add to Cart Button */}

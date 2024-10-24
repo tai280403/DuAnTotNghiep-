@@ -1,9 +1,58 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [laptops, setLaptops] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('Popular'); // Active category
+
+  const fetchData = (category) => {
+    setLoading(true); // Start loading when a new category is selected
+    let apiUrl = '';
+
+    // Define different API links for each category
+    switch (category) {
+      case 'Popular':
+        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        break;
+      case 'Trending':
+        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        break;
+      case 'News':
+        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        break;
+      case 'Sale':
+        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+        break;
+      default:
+        apiUrl = 'http://10.24.50.169:3000/LapTop/getListLapTop';
+    }
+
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setLaptops(response.data.data);
+        setLoading(false); // Stop loading after data is fetched
+      })
+      .catch((error) => {
+        console.error('Error fetching laptop data:', error);
+        setLaptops([]);
+        setLoading(false); // Stop loading even if there is an error
+      });
+  };
+
+  useEffect(() => {
+    fetchData(activeCategory); // Initial fetch for default category
+  }, [activeCategory]);
+
+  const handleCategoryPress = (category) => {
+    setActiveCategory(category); // Update the active category
+    fetchData(category); // Fetch data for the selected category
+  };
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -24,10 +73,18 @@ const HomeScreen = () => {
 
       {/* Categories */}
       <View style={styles.categories}>
-        <Text style={[styles.category, styles.categoryActive]}>Popular</Text>
-        <Text style={styles.category}>Trending</Text>
-        <Text style={styles.category}>News</Text>
-        <Text style={styles.category}>Sale</Text>
+        <TouchableOpacity onPress={() => handleCategoryPress('Popular')}>
+          <Text style={[styles.category, activeCategory === 'Popular' && styles.categoryActive]}>Popular</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleCategoryPress('Trending')}>
+          <Text style={[styles.category, activeCategory === 'Trending' && styles.categoryActive]}>Trending</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleCategoryPress('News')}>
+          <Text style={[styles.category, activeCategory === 'News' && styles.categoryActive]}>News</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleCategoryPress('Sale')}>
+          <Text style={[styles.category, activeCategory === 'Sale' && styles.categoryActive]}>Sale</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Filter & Sort */}
@@ -35,63 +92,38 @@ const HomeScreen = () => {
         <Text style={styles.filterSortText}>FILTER & SORT</Text>
         <Image source={require('../acssets/sorttool.png')} style={styles.icon} />
       </View>
- 
-      {/* Product List wrapped in ScrollView */}
-      <ScrollView style={styles.productScrollView}>
-        <View style={styles.productList}>
-          {/* Product 1 */}
-          <View style={styles.product} >
-            <TouchableOpacity onPress={() => navigation.navigate('Buy')}>
-            <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
-            <Text style={styles.productName}>HP</Text>
-            <Text style={styles.productPrice}>$750.00 USD</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.heartIconContainer}>
-              <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
-            </TouchableOpacity>
-          </View>
 
-          {/* Product 2 */}
-          <View style={styles.product} >
-            <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
-            <Text style={styles.productName}>Asus</Text>
-            <Text style={styles.productPrice}>$668.00 USD</Text>
-            <TouchableOpacity style={styles.heartIconContainer}>
-              <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
-            </TouchableOpacity>
-          </View>
+      {/* Product List */}
+      {loading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#6C63FF" />
         </View>
-
-        {/* Product List Continued */}
-        <View style={styles.productList}>
-          {/* Product 3 */}
-          <View style={styles.product}>
-            <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
-            <Text style={styles.productName}>Acer Aspire Lite 16</Text>
-            <Text style={styles.productPrice}>$858.00 USD</Text>
-            <TouchableOpacity style={styles.heartIconContainer}>
-              <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
-            </TouchableOpacity>
+      ) : (
+        <ScrollView style={styles.productScrollView}>
+          <View style={styles.productList}>
+            {Array.isArray(laptops) &&
+              laptops.map((laptop) => (
+                <View style={styles.product} key={laptop._id}>
+                  <TouchableOpacity onPress={() => navigation.navigate('ProductScreen', { product: laptop })}>
+                    <Image source={{ uri: laptop.Img }} style={styles.productImage} />
+                    <Text style={styles.productName}>{laptop.TenSP}</Text>
+                    <Text style={styles.productPrice}>${laptop.Gia} USD</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.heartIconContainer}>
+                    <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
+                  </TouchableOpacity>
+                </View>
+              ))}
           </View>
-
-          {/* Product 4 */}
-          <View style={styles.product}>
-            <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
-            <Text style={styles.productName}>Lenovo Yoga</Text>
-            <Text style={styles.productPrice}>$949.00 USD</Text>
-            <TouchableOpacity style={styles.heartIconContainer}>
-              <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
-
+        </ScrollView>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
+  loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   header: { flexDirection: 'row', justifyContent: 'space-between', padding: 16 },
   profileImage: { width: 40, height: 40, borderRadius: 20 },
   headerIcons: { flexDirection: 'row' },
@@ -101,34 +133,26 @@ const styles = StyleSheet.create({
   categoryActive: { color: '#6C63FF', borderBottomWidth: 2, borderBottomColor: '#6C63FF' },
   filterSort: { flexDirection: 'row', justifyContent: 'space-between', padding: 16 },
   filterSortText: { fontSize: 16, fontWeight: 'bold' },
-  productScrollView: { paddingVertical: 16 },  // Adjusted for scroll view
-  productList: { flexDirection: 'row', justifyContent: 'space-around', padding: 16 },
+  productScrollView: { paddingVertical: 16 },
+  productList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
   product: {
     alignItems: 'center',
     backgroundColor: '#F5F5F5',
     borderRadius: 15,
-    width: '45%',
+    width: '47%',
     padding: 16,
+    marginBottom: 16,
   },
   productImage: { width: 100, height: 100, resizeMode: 'contain' },
   productName: { fontSize: 16, fontWeight: 'bold', marginTop: 10, textAlign: 'center' },
   productPrice: { fontSize: 14, color: '#888', marginTop: 5 },
   heartIconContainer: { position: 'absolute', top: 10, right: 10 },
   heartIcon: { width: 20, height: 20 },
-  bottomNavigation: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 16,
-    paddingHorizontal: 30,
-    backgroundColor: '#f1f1f1',
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  
 });
 
 export default HomeScreen;
