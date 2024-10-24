@@ -7,7 +7,7 @@ const users = [
     name: 'Bảy cỏ',
     phone: '0357103658',
     email: 'linhdtqph35049@fpt.edu.vn',
-    avatar: 'https://images-cdn.9gag.com/photo/aD1b0Q7_700b.jpg', // Thay bằng link avatar thật
+    avatar: 'https://images-cdn.9gag.com/photo/aD1b0Q7_700b.jpg',
   },
   {
     id: '2',
@@ -51,6 +51,9 @@ const UserManagementScreen = () => {
 
   return (
     <View style={styles.container}>
+              <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <Image source={require('../acssets/BackButton.png')} style={styles.backIcon} /> 
+      </TouchableOpacity>
       <Text style={styles.title}>Quản lí người dùng</Text>
       <FlatList
         data={users}
@@ -68,23 +71,28 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 22, // Điều chỉnh kích thước giống hình
     fontWeight: 'bold',
     textAlign: 'center',
+    color:'black',
     marginBottom: 20,
   },
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#f8f8f8',
     borderRadius: 10,
-    padding: 10,
+    padding: 15,
     marginBottom: 15,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 70, // Điều chỉnh kích thước lớn hơn
+    height: 70,
+    borderRadius: 35,
     marginRight: 15,
   },
   userInfo: {
@@ -103,17 +111,19 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   actions: {
-    flexDirection: 'row',
+    flexDirection: 'column', // Thay đổi thành column để các icon xếp dọc
+    justifyContent: 'space-between', // Giãn đều khoảng cách giữa các icon
+    alignItems: 'center',
   },
   icon: {
-    width: 24,
-    height: 24,
-    marginHorizontal: 10,
+    width: 26, // Điều chỉnh kích thước icon
+    height: 26,
+    marginVertical: 10, // Thêm khoảng cách giữa các icon
   },
   iconnext: {
-    width: 26,
+    width: 24, // Kích thước icon mũi tên
     height: 14,
-    marginHorizontal: 10,
+    marginVertical: 10, // Thêm khoảng cách giữa các icon
   },
 });
 
