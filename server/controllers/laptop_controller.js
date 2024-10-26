@@ -9,7 +9,6 @@ exports.getListlaptop = async (req, res, next) => {
     }
 };
 
-
 exports.addlaptop = async (req, res, next) => {
     try {
         const { file } = req;
@@ -17,13 +16,20 @@ exports.addlaptop = async (req, res, next) => {
 
         const data = req.body;
         const newlaptop = new laptopModel({
-            HangSX: data.HangSX,
-            TenSP: data.TenSP,
-            Img: imageUrl,
-            CauHinh: data.CauHinh,
-            Gia: data.Gia,
-            MoTa: data.MoTa,
-            SoLuong: data.SoLuong,
+            id: data.id,
+            ten: data.ten,
+            moTa: data.moTa,
+            gia: data.gia,
+            hinhAnh: imageUrl,
+            danhMuc: data.danhMuc,
+            soLuongTonKho: data.soLuongTonKho,
+            danhGia: data.danhGia,
+            cpu: data.cpu,
+            ram: data.ram,
+            cardDoHoa: data.cardDoHoa,
+            trongLuong: data.trongLuong,
+            thoiLuongPin: data.thoiLuongPin,
+            khoangGia: data.khoangGia,
         });
         
         const savelaptop = await newlaptop.save();
@@ -46,13 +52,20 @@ exports.updatelaptop = async (req, res, next) => {
         const data = req.body;
 
         const updatelaptop = {
-            HangSX: data.HangSX,
-            TenSP: data.TenSP,
-            Img: imageUrl,
-            CauHinh: data.CauHinh,
-            Gia: data.Gia,
-            MoTa: data.MoTa,
-            SoLuong: data.SoLuong,
+            id: data.id,
+            ten: data.ten,
+            moTa: data.moTa,
+            gia: data.gia,
+            hinhAnh: imageUrl,
+            danhMuc: data.danhMuc,
+            soLuongTonKho: data.soLuongTonKho,
+            danhGia: data.danhGia,
+            cpu: data.cpu,
+            ram: data.ram,
+            cardDoHoa: data.cardDoHoa,
+            trongLuong: data.trongLuong,
+            thoiLuongPin: data.thoiLuongPin,
+            khoangGia: data.khoangGia,
         };
 
         let result = await laptopModel.findByIdAndUpdate(id, updatelaptop, { new: true });

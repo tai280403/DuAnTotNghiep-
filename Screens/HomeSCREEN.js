@@ -7,50 +7,50 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const [laptops, setLaptops] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState('Popular'); // Active category
+  const [activeCategory, setActiveCategory] = useState('Popular');
 
   const fetchData = (category) => {
-    setLoading(true); // Start loading when a new category is selected
+    setLoading(true);
     let apiUrl = '';
 
-    // Define different API links for each category
+    // Xác định link API cho từng danh mục
     switch (category) {
       case 'Popular':
-        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
+        apiUrl = 'http://172.20.10.6:3000/LapTop/getListLapTop';
         break;
       case 'Trending':
-        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
+        apiUrl = 'http://172.20.10.6:3000/LapTop/getListLapTop';
         break;
       case 'News':
-        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
+        apiUrl = 'http://172.20.10.6:3000/LapTop/getListLapTop';
         break;
       case 'Sale':
-        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
+        apiUrl = 'http://172.20.10.6:3000/LapTop/getListLapTop';
         break;
       default:
-        apiUrl = 'http://10.24.50.151:3000/LapTop/getListLapTop';
+        apiUrl = 'http://172.20.10.6:3000/LapTop/getListLapTop'; // URL mặc định
     }
 
     axios
       .get(apiUrl)
       .then((response) => {
         setLaptops(response.data.data);
-        setLoading(false); // Stop loading after data is fetched
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching laptop data:', error);
         setLaptops([]);
-        setLoading(false); // Stop loading even if there is an error
+        setLoading(false);
       });
   };
 
   useEffect(() => {
-    fetchData(activeCategory); // Initial fetch for default category
+    fetchData(activeCategory);
   }, [activeCategory]);
 
   const handleCategoryPress = (category) => {
-    setActiveCategory(category); // Update the active category
-    fetchData(category); // Fetch data for the selected category
+    setActiveCategory(category);
+    fetchData(category);
   };
 
   return (
@@ -87,12 +87,6 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Filter & Sort */}
-      <View style={styles.filterSort}>
-        <Text style={styles.filterSortText}>FILTER & SORT</Text>
-        <Image source={require('../acssets/sorttool.png')} style={styles.icon} />
-      </View>
-
       {/* Product List */}
       {loading ? (
         <View style={styles.loadingContainer}>
@@ -105,9 +99,9 @@ const HomeScreen = () => {
               laptops.map((laptop) => (
                 <View style={styles.product} key={laptop._id}>
                   <TouchableOpacity onPress={() => navigation.navigate('ProductScreen', { product: laptop })}>
-                    <Image source={{ uri: laptop.Img }} style={styles.productImage} />
-                    <Text style={styles.productName}>{laptop.TenSP}</Text>
-                    <Text style={styles.productPrice}>${laptop.Gia} USD</Text>
+                    <Image source={{ uri: laptop.hinhAnh }} style={styles.productImage} />
+                    <Text style={styles.productName}>{laptop.ten}</Text>
+                    <Text style={styles.productPrice}>{laptop.gia.toLocaleString()} VND</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.heartIconContainer}>
                     <Image source={require('../acssets/Vector.png')} style={styles.heartIcon} />
@@ -131,8 +125,6 @@ const styles = StyleSheet.create({
   categories: { flexDirection: 'row', justifyContent: 'space-around', paddingVertical: 16 },
   category: { fontSize: 16, fontWeight: 'bold', color: '#999' },
   categoryActive: { color: '#6C63FF', borderBottomWidth: 2, borderBottomColor: '#6C63FF' },
-  filterSort: { flexDirection: 'row', justifyContent: 'space-between', padding: 16 },
-  filterSortText: { fontSize: 16, fontWeight: 'bold' },
   productScrollView: { paddingVertical: 16 },
   productList: {
     flexDirection: 'row',
