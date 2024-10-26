@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductScreen = () => {
+
+    const navigation = useNavigation();
+
     const route = useRoute();
     const { product } = route.params; // Lấy dữ liệu sản phẩm từ params
 
@@ -22,7 +26,7 @@ const ProductScreen = () => {
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => { /* Back navigation logic */ }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('Home') }}>
                     <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity>
