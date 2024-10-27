@@ -58,10 +58,10 @@ const CartScreen = () => {
                 )}
             </ScrollView>
 
-            <View style={styles.totalContainer}>
-                <Text style={styles.totalText}>Tổng: {totalAmount.toLocaleString()} VND</Text>
+            <View style={styles.checkoutBar}>
                 <TouchableOpacity style={styles.checkoutButton}>
-                    <Text style={styles.checkoutText}>THANH TOÁN</Text>
+                    <Text style={styles.checkoutText}>GO TO CHECKOUT</Text>
+                    <Text style={styles.totalAmount}>${totalAmount.toLocaleString()}</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -69,9 +69,15 @@ const CartScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    totalAmount: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
     container: {
         flex: 1,
         backgroundColor: '#F9F9F9',
+        marginBottom: 60,
     },
     header: {
         flexDirection: 'row',
