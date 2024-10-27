@@ -1,48 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { saveCartItems, loadCartItems } from '../utils/storage'; // Đảm bảo import đúng đường dẫn
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getCartItems, saveCartItems } from '../utils/storage';
+
+const initialState = {
+    items: [],
+};
+
+export const loadCart = createAsyncThunk('cart/loadCart', async () => {
+    return await getCartItems(); // Lấy giỏ hàng từ AsyncStorage
+});
 
 const cartSlice = createSlice({
     name: 'cart',
-    initialState: {
-        items: [],
-    },
+    initialState,
     reducers: {
         addToCart: (state, action) => {
-            const existingItem = state.items.find(item => item._id.$oid === action.payload._id.$oid);
+            const existingItem = state.items.find(item => item._id === action.payload._id);
             if (existingItem) {
-                existingItem.quantity += action.payload.quantity; 
+                existingItem.quantity += action.payload.quantity;
             } else {
                 state.items.push({ ...action.payload, quantity: action.payload.quantity });
             }
-            saveCartItems(state.items);
+            saveCartItems(state.items); // Lưu giỏ hàng vào AsyncStorage sau khi cập nhật
         },
         removeFromCart: (state, action) => {
-            const updatedItems = state.items.filter(item => item._id.$oid !== action.payload);
-            state.items = updatedItems;
-            saveCartItems(updatedItems);
+            state.items = state.items.filter(item => item._id !== action.payload);
+            saveCartItems(state.items);
         },
-        loadCart: (state, action) => {
-            state.items = action.payload;
-        },
-        increaseQuantity: (state, action) => {
-            const existingItem = state.items.find(item => item._id.$oid === action.payload);
-            if (existingItem) {
-                existingItem.quantity += 1;
-                saveCartItems(state.items);
-            }
-        },
-        decreaseQuantity: (state, action) => {
-            const existingItem = state.items.find(item => item._id.$oid === action.payload);
-            if (existingItem) {
-                existingItem.quantity -= 1;
-                if (existingItem.quantity <= 0) {
-                    state.items = state.items.filter(item => item._id.$oid !== action.payload);
-                }
+        updateQuantity: (state, action) => {
+            const item = state.items.find(item => item._id === action.payload.id);
+            if (item && action.payload.quantity > 0) {
+                item.quantity = action.payload.quantity;
                 saveCartItems(state.items);
             }
         },
     },
+    extraReducers: (builder) => {
+        builder.addCase(loadCart.fulfilled, (state, action) => {
+            state.items = action.payload; // Cập nhật giỏ hàng từ AsyncStorage khi ứng dụng khởi động
+        });
+    },
 });
 
-export const { addToCart, removeFromCart, loadCart, increaseQuantity, decreaseQuantity } = cartSlice.actions;
-export default cartSlice.reducer;  
+export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions;
+export default cartSlice.reducer;

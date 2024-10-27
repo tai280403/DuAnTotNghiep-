@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux';
-import store from './redux/store';
 
 // Import các màn hình
 import FindScreen from './Screens/Find';
@@ -30,6 +29,7 @@ import ProductManagement from './ScreensAdmin/ProductManagementScreen';
 import ProductScreen from './Screens/Buy';
 import { getCartItems } from './redux/AsyncStorage';
 import { loadCart } from './redux/cartSlice';
+import { store } from './redux/store';
 
 const Stack = createStackNavigator();
 
@@ -82,14 +82,9 @@ const AppNavigator = ({ navigationRef }) => {
 
 const App = () => {
   useEffect(() => {
-    const loadInitialData = async () => {
-        const cartItems = await getCartItems();
-        store.dispatch(loadCart(cartItems)); // Cập nhật giỏ hàng vào Redux
-    };
-
-    loadInitialData();
+    // Dispatch action để tải giỏ hàng từ AsyncStorage
+    store.dispatch(loadCart());
 }, []);
-
   const navigationRef = useRef(null);
 
   return (

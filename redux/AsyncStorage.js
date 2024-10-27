@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 export const getCartItems = async () => {
     try {
         const jsonValue = await AsyncStorage.getItem('cartItems');
@@ -17,4 +18,8 @@ export const saveCartItems = async (items) => {
     } catch (e) {
         console.error("Lỗi khi lưu giỏ hàng vào AsyncStorage", e);
     }
+};
+const loadCartFromLocalStorage = async () => {
+    const savedCart = await AsyncStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
 };
