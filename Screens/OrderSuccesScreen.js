@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 const OrderSuccesScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {/* Success Icon (using a local asset) */}
       <View style={styles.iconContainer}>
         <Image
-          source={require('./assets/images/sucses.png')} // Local success icon
+          source={require('../acssets/sucses.png')} // Local success icon
           style={styles.successIcon}
         />
       </View>
@@ -21,7 +22,7 @@ const OrderSuccesScreen = () => {
       </Text>
 
       {/* Buttons */}
-      <TouchableOpacity style={styles.trackButton}>
+      <TouchableOpacity style={styles.trackButton} onPress={()=>navigation.navigate('OderScreen')}>
         <Text style={styles.buttonText}>TRACK ORDER</Text>
       </TouchableOpacity>
 

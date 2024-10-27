@@ -13,7 +13,7 @@ const OrderFailedScreen = () => {
       {/* Failure Icon */}
       <View style={styles.iconContainer}>
         <Image
-          source={require('./assets/failed.png')} // Check this path
+          source={require('../acssets/failed.png')} // Check this path
           style={styles.failureIcon}
         />
       </View>

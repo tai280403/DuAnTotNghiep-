@@ -22,7 +22,8 @@ import AccountManagement from './Screens/Accountmanagement';
 import PictureScreen from './Screens/PictureScreen';
 import CommentScreen from './Screens/CommentScreen';
 import ForgotPasswordScreen from './Screens/ForgotPasswordScreen';
-
+import OrderSuccesScreen from './Screens/OrderSuccesScreen';
+import OrderFailedScreen from './Screens/OrderFailedScreen';
 
 // Import component Bottom Navigation
 import BottomNavigation from './components/bottomnavigation'; // Đảm bảo đường dẫn đúng
@@ -54,6 +55,8 @@ const AppNavigator = ({ navigationRef }) => {
         <Stack.Screen name="Buy" component={BuyScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
         <Stack.Screen name="OderScreen" component={OderScreen} />
+        <Stack.Screen name="OrderSuccesScreen" component={OrderSuccesScreen} />
+        <Stack.Screen name="OrderFailedScreen" component={OrderFailedScreen} />
         <Stack.Screen name="PayScreen" component={PayScreen} />
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
         <Stack.Screen name="HelpScreen" component={HelpScreen} />
