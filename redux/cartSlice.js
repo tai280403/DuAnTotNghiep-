@@ -1,12 +1,14 @@
+// cartSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getCartItems, saveCartItems } from '../utils/storage';
+import { loadCartItems, saveCartItems } from '../utils/storage'; // Import hàm load và save từ storage
 
 const initialState = {
     items: [],
 };
 
+// Thunk để tải giỏ hàng từ AsyncStorage khi ứng dụng khởi động
 export const loadCart = createAsyncThunk('cart/loadCart', async () => {
-    return await getCartItems(); // Lấy giỏ hàng từ AsyncStorage
+    return await loadCartItems(); // Gọi hàm load từ AsyncStorage
 });
 
 const cartSlice = createSlice({
