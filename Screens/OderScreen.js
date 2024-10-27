@@ -1,13 +1,36 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import axios from 'axios';
 
 const OrderScreen = () => {
+  const [orders, setOrders] = useState([]); // State để lưu đơn hàng
+  const [loading, setLoading] = useState(true); // State để quản lý trạng thái loading
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('http://192.168.55.176:3000/donhang');
+        console.log(response.data);
+        setOrders(response.data.data);
+      } catch (error) {
+        console.error('Error fetching orders:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchOrders();
+  }, []);
+  
+  
+
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity>
-          <Image source={require('../acssets/BackButton.png')}  />
+          <Image source={require('../acssets/BackButton.png')} />
         </TouchableOpacity>
         <Text style={styles.headerText}>Orders</Text>
         <TouchableOpacity>
@@ -24,45 +47,40 @@ const OrderScreen = () => {
       </View>
 
       {/* Orders List */}
-      <ScrollView style={styles.ordersList}>
-        {/* Order Item */}
-        <View style={styles.orderItem}>
-          <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
-          <View style={styles.productInfo}>
-            <Text style={styles.productName}>Printed Shirt</Text>
-            <Text style={styles.productBrand}>GEETA COLLECTION</Text>
-            <Text style={styles.productPrice}>$858.00 USD</Text>
-            <Text style={styles.orderStatus}>Đơn hàng đã được giao</Text>
-            <View style={styles.productActions}>
-              <TouchableOpacity style={styles.actionButton}>
-                <Text style={styles.actionButtonText}>Mua lại</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.reviewButton}>
-                <Text style={styles.reviewButtonText}>Viết đánh giá</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+      {loading ? (
+  <ActivityIndicator size="large" color="#6C63FF" />
+) : (
+  <ScrollView style={styles.ordersList}>
+   {orders.length > 0 ? (
+  orders.map((order) => (
+    <View key={order._id} style={styles.orderItem}>
+      <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
+      <View style={styles.productInfo}>
+        <Text style={styles.productName}>Tên người nhận: {order.thongTinVanChuyen.tenNguoiNhan}</Text>
+        <Text style={styles.productBrand}>Số điện thoại: {order.thongTinVanChuyen.soDienThoai}</Text>
+        <Text style={styles.productBrand}>Địa chỉ: {order.thongTinVanChuyen.diaChi}</Text>
+        <Text style={styles.productName}>Laptop ID: {order.laptop[0]?.laptopId}</Text>
+        <Text style={styles.productBrand}>Số lượng: {order.laptop[0]?.soLuong}</Text>
+        <Text style={styles.productPrice}>{order.tongTien.toLocaleString()} VND</Text>
+        <Text style={styles.orderStatus}>{order.trangThai}</Text>
+        <View style={styles.productActions}>
+          <TouchableOpacity style={styles.actionButton}>
+            <Text style={styles.actionButtonText}>Mua lại</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.reviewButton}>
+            <Text style={styles.reviewButtonText}>Viết đánh giá</Text>
+          </TouchableOpacity>
         </View>
+      </View>
+    </View>
+  ))
+) : (
+  <Text style={styles.noOrdersText}>Không có đơn hàng nào.</Text>
+)}
 
-        {/* Duplicate the Order Item for more items */}
-        <View style={styles.orderItem}>
-          <Image source={require('../acssets/Asus1.png')} style={styles.productImage} />
-          <View style={styles.productInfo}>
-            <Text style={styles.productName}>Printed Shirt</Text>
-            <Text style={styles.productBrand}>GEETA COLLECTION</Text>
-            <Text style={styles.productPrice}>$858.00 USD</Text>
-            <Text style={styles.orderStatus}>Đơn hàng đã được giao</Text>
-            <View style={styles.productActions}>
-              <TouchableOpacity style={styles.actionButton}>
-                <Text style={styles.actionButtonText}>Mua lại</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.reviewButton}>
-                <Text style={styles.reviewButtonText}>Viết đánh giá</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </ScrollView>
+  </ScrollView>
+)}
+
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNavigation}>
@@ -178,7 +196,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#6C63FF',
   },
-
+  noOrdersText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#999',
+    marginTop: 20,
+  },
   bottomNavigation: {
     flexDirection: 'row',
     justifyContent: 'space-around',
