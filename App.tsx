@@ -22,10 +22,11 @@ import AccountManagement from './Screens/Accountmanagement';
 import PictureScreen from './Screens/PictureScreen';
 import CommentScreen from './Screens/CommentScreen';
 import ForgotPasswordScreen from './Screens/ForgotPasswordScreen';
-import BottomNavigation from './components/bottomnavigation'; 
-import UserManagementScreen from './ScreensAdmin/UserManagementScreen';
-import PortfolioManagement from './ScreensAdmin/PortfolioManagement';
-import ProductManagement from './ScreensAdmin/ProductManagementScreen';
+import OrderSuccesScreen from './Screens/OrderSuccesScreen';
+import OrderFailedScreen from './Screens/OrderFailedScreen';
+
+// Import component Bottom Navigation
+import BottomNavigation from './components/bottomnavigation';
 import ProductScreen from './Screens/Buy';
 import { getCartItems } from './redux/AsyncStorage';
 import { loadCart } from './redux/cartSlice';
@@ -57,6 +58,8 @@ const AppNavigator = ({ navigationRef }) => {
         <Stack.Screen name="Buy" component={BuyScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
         <Stack.Screen name="OderScreen" component={OderScreen} />
+        <Stack.Screen name="OrderSuccesScreen" component={OrderSuccesScreen} />
+        <Stack.Screen name="OrderFailedScreen" component={OrderFailedScreen} />
         <Stack.Screen name="PayScreen" component={PayScreen} />
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
         <Stack.Screen name="HelpScreen" component={HelpScreen} />
@@ -65,14 +68,10 @@ const AppNavigator = ({ navigationRef }) => {
         <Stack.Screen name="PictureScreen" component={PictureScreen} />
         <Stack.Screen name="CommentScreen" component={CommentScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-        <Stack.Screen name="UserManagementScreen" component={UserManagementScreen} />
-        <Stack.Screen name="PortfolioManagement" component={PortfolioManagement} />
-        <Stack.Screen name="ProductManagementScreen" component={ProductManagement} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} />
-
       </Stack.Navigator>
 
-      {/* Hiển thị Bottom Navigation khi không ở các màn hình Splash, Login, Register */}
+      {/* Chỉ hiển thị Bottom Navigation khi không phải các màn hình Splash, Login, Register */}
       {currentRouteName !== 'Splash' && currentRouteName !== 'Login' && currentRouteName !== 'Register' && (
         <BottomNavigation />
       )}
@@ -84,7 +83,8 @@ const App = () => {
   useEffect(() => {
     // Dispatch action để tải giỏ hàng từ AsyncStorage
     store.dispatch(loadCart());
-}, []);
+  }, []);
+  
   const navigationRef = useRef(null);
 
   return (
