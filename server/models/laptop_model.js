@@ -1,45 +1,28 @@
 const db = require("./db");
-const mongoose = db.mongoose; // Giả sử bạn đã export mongoose từ db.js
+const mongoose = db.mongoose;
 
-// Định nghĩa schema cho laptop
 const laptopSchema = new mongoose.Schema(
   {
-    HangSX: {
-      type: String,
-      required: true,
-    },
-    TenSP: {
-      type: String,
-      required: true,
-    },
-    Img: {
-      type: String,
-      required: true,
-    },
-    CauHinh: {
-      type: String,
-      required: true,
-    },
-    Gia: {
-      type: Number,
-      required: true,
-    },
-    MoTa: {
-      type: String,
-      required: true,
-    },
-    SoLuong: {
-      type: Number,
-      required: true,
-    },
+    ten: { type: String, required: true },
+    moTa: { type: String, required: true },
+    gia: { type: Number, required: true },
+    hinhAnh: { type: String, required: true },
+    danhMuc: { type: String, required: true },
+    soLuongTonKho: { type: Number, required: true },
+    danhGia: { type: Number, required: true },
+    cpu: { type: String, required: true },
+    ram: { type: String, required: true },
+    cardDoHoa: { type: String, required: true },
+    trongLuong: { type: String, required: true },
+    thoiLuongPin: { type: String, required: true },
+    khoangGia: { type: String, required: true },
   },
   {
-    collection: "laptops", // Chỉnh sửa tên collection thành "laptops"
+    collection: "laptops",
     timestamps: true,
   }
 );
 
-// Tạo model cho laptop
 const laptopModel = mongoose.model("LapStore", laptopSchema);
 
 module.exports = { laptopModel };

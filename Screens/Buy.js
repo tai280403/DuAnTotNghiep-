@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductScreen = () => {
+
+    const navigation = useNavigation();
+
     const route = useRoute();
-    const { product } = route.params; // Access product data from route params
+    const { product } = route.params; // Lấy dữ liệu sản phẩm từ params
 
     const [quantity, setQuantity] = useState(1);
 
@@ -22,7 +26,7 @@ const ProductScreen = () => {
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => { /* Back navigation logic */ }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('Home') }}>
                     <Image source={require('../acssets/BackButton.png')} style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -31,24 +35,23 @@ const ProductScreen = () => {
             </View>
 
             <ScrollView contentContainerStyle={styles.contentContainer}>
-                {/* Product Image */}
-                <Image source={{ uri: product.Img }} style={styles.productImage} />
+                {/* Hình ảnh sản phẩm */}
+                <Image source={{ uri: product.hinhAnh }} style={styles.productImage} />
 
-                {/* Product Info */}
+                {/* Thông tin sản phẩm */}
                 <View style={styles.productInfo}>
                     <Text style={styles.productTitle}>{product.HangSX}</Text>
                     <Text style={styles.productName}>{product.TenSP}</Text>
-                    <Text style={styles.productPrice}>${product.Gia} USD</Text>
+                    <Text style={styles.productPrice}>{product.gia.toLocaleString()} VND</Text>
 
-                    {/* Rating */}
+                    {/* Đánh giá */}
                     <View style={styles.rating}>
                         <Text>⭐⭐⭐⭐</Text>
                         <Text style={styles.ratingText}>(4.5)</Text>
                     </View>
 
-                    {/* Quantity Selector */}
+                    {/* Chọn số lượng */}
                     <View style={styles.quantityShareContainer}>
-                        {/* Quantity Selector */}
                         <View style={styles.quantityContainer}>
                             <TouchableOpacity onPress={handleDecreaseQuantity} style={styles.quantityButton}>
                                 <Text style={styles.quantityText}>-</Text>
@@ -59,26 +62,26 @@ const ProductScreen = () => {
                             </TouchableOpacity>
                         </View>
 
-                        {/* Share Icon */}
+                        {/* Nút chia sẻ */}
                         <TouchableOpacity style={styles.shareButton}>
                             <Image source={require('../acssets/sharearrow.png')} style={styles.iconShare} />
                         </TouchableOpacity>
                     </View>
 
-                    {/* Description */}
+                    {/* Mô tả */}
                     <View style={styles.descriptionContainer}>
-                        <Text style={styles.sectionTitle}>DESCRIPTION</Text>
+                        <Text style={styles.sectionTitle}>MÔ TẢ</Text>
                         <Text style={styles.descriptionText}>{product.MoTa}</Text>
                     </View>
 
-                    {/* Add to Cart Button */}
+                    {/* Nút thêm vào giỏ hàng */}
                     <TouchableOpacity style={styles.addToCartButton}>
-                        <Text style={styles.addToCartText}>ADD TO CART</Text>
+                        <Text style={styles.addToCartText}>THÊM VÀO GIỎ HÀNG</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
 
-            {/* Bottom Navigation */}
+            {/* Thanh điều hướng dưới cùng */}
             <View style={styles.bottomNavigation}>
                 <TouchableOpacity>
                     <Image source={require('../acssets/home.png')} style={styles.iconNav} />
@@ -193,13 +196,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f7fb',
         borderRadius: 50,
         padding: 12,
-        
     },
     iconShare: {
         width: 24,
         height: 24,
-        left:6
-        
     },
     descriptionContainer: {
         marginBottom: 16,
