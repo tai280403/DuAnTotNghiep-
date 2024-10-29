@@ -47,8 +47,8 @@ const ProductScreen = () => {
 
                 {/* Thông tin sản phẩm */}
                 <View style={styles.productInfo}>
-                    <Text style={styles.productTitle}>{product.HangSX}</Text>
-                    <Text style={styles.productName}>{product.TenSP}</Text>
+                    <Text style={styles.productTitle}>{product.danhMuc}</Text>
+                    <Text style={styles.productName}>{product.ten}</Text>
                     <Text style={styles.productPrice}>{product.gia.toLocaleString()} VND</Text>
 
                     {/* Đánh giá */}
@@ -73,7 +73,7 @@ const ProductScreen = () => {
                     {/* Mô tả */}
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.sectionTitle}>MÔ TẢ</Text>
-                        <Text style={styles.descriptionText}>{product.MoTa}</Text>
+                        <Text style={styles.descriptionText}>{product.moTa}</Text>
                     </View>
 
                     {/* Nút thêm vào giỏ hàng */}
