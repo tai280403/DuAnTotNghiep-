@@ -31,6 +31,9 @@ import ProductScreen from './Screens/Buy';
 import { getCartItems } from './redux/AsyncStorage';
 import { loadCart } from './redux/cartSlice';
 import { store } from './redux/store';
+import NotificationScreen from './Screens/NotificationScreen';
+import OTPVerificationScreen from './Screens/OTPVerificationScreen';
+import ResetPasswordScreen from './Screens/ResetPasswordScreen';
 
 const Stack = createStackNavigator();
 
@@ -69,6 +72,9 @@ const AppNavigator = ({ navigationRef }) => {
         <Stack.Screen name="CommentScreen" component={CommentScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} />
+        <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
+        <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
+        <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
       </Stack.Navigator>
 
       {/* Chỉ hiển thị Bottom Navigation khi không phải các màn hình Splash, Login, Register */}
