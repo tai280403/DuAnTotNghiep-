@@ -26,12 +26,14 @@ const OrderSuccesScreen = () => {
         <Text style={styles.buttonText}>TRACK ORDER</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.shopButton}>
+      <TouchableOpacity style={styles.shopButton} onPress={()=>navigation.navigate('Home')}>
         <Text style={styles.buttonText}>CONTINUE SHOPPING</Text>
-      </TouchableOpacity>
+      </TouchableOpacity >
 
       {/* Back to Home Text at the Bottom */}
-      <Text style={styles.backToHomeText}>← Back to home</Text>
+      
+      <Text style={styles.backToHomeText} onPress={()=>navigation.navigate('Home')}>← Back to home</Text>
+      
     </View>
   );
 };

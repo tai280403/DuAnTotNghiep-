@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../redux/cartSlice'; // Import hành động từ cartSlice
 
 const CartScreen = () => {
+
+    //
     const cartItems = useSelector(state => state.cart.items);
     const navigation = useNavigation();
     const dispatch = useDispatch();
@@ -59,7 +61,7 @@ const CartScreen = () => {
             </ScrollView>
 
             <View style={styles.checkoutBar}>
-                <TouchableOpacity style={styles.checkoutButton}>
+                <TouchableOpacity style={styles.checkoutButton} onPress={()=>navigation.navigate('Checkout')}>
                     <Text style={styles.checkoutText}>GO TO CHECKOUT</Text>
                     <Text style={styles.totalAmount}>${totalAmount.toLocaleString()}</Text>
                 </TouchableOpacity>
