@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux';
 
 // Import các màn hình
+
 import FindScreen from './Screens/Find';
 import Favorite from './Screens/Favorite';
 import BuyScreen from './Screens/Buy';
@@ -31,9 +32,10 @@ import ProductScreen from './Screens/Buy';
 import { getCartItems } from './redux/AsyncStorage';
 import { loadCart } from './redux/cartSlice';
 import { store } from './redux/store';
-import NotificationScreen from './Screens/NotificationScreen';
+// import NotificationScreen from './Screens/NotificationScreen';
 import OTPVerificationScreen from './Screens/OTPVerificationScreen';
-import ResetPasswordScreen from './Screens/ResetPasswordScreen';
+// import ResetPasswordScreen from './Screens/ResetPasswordScreen';
+import AdminScreen from './ScreensAdmin/AdminScreen';
 
 const Stack = createStackNavigator();
 
@@ -53,6 +55,7 @@ const AppNavigator = ({ navigationRef }) => {
     <View style={styles.container}>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="AdminHome" component={AdminScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={HomeScreen} />
@@ -72,9 +75,9 @@ const AppNavigator = ({ navigationRef }) => {
         <Stack.Screen name="CommentScreen" component={CommentScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} />
-        <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
+        {/* <Stack.Screen name="NotificationScreen" component={NotificationScreen} /> */}
         <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
-        <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
+        {/* <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} /> */}
       </Stack.Navigator>
 
       {/* Chỉ hiển thị Bottom Navigation khi không phải các màn hình Splash, Login, Register */}
