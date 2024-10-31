@@ -11,7 +11,6 @@ var usersRouter = require('./routes/users');
 var laptopRouter = require('./routes/laptop_router');
 var donHangRouter = require('./routes/donhang_router'); // Import route đơn hàng
 var gioHangRouter = require('./routes/giohang_router'); // Import route giỏ hàng
-//..
 var app = express();
 
 // Sử dụng middleware CORS
