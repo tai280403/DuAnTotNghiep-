@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import axios from 'axios';
-
+import { useNavigation } from '@react-navigation/native';
 const OrderScreen = () => {
+  const navigation = useNavigation();
   const [orders, setOrders] = useState([]); // State để lưu đơn hàng
   const [loading, setLoading] = useState(true); // State để quản lý trạng thái loading
 
@@ -10,7 +11,7 @@ const OrderScreen = () => {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://192.168.55.176:3000/donhang');
+        const response = await axios.get('http://10.24.41.59:3000/donhang');
         console.log(response.data);
         setOrders(response.data.data);
       } catch (error) {
@@ -29,7 +30,7 @@ const OrderScreen = () => {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.goBack()}>
           <Image source={require('../acssets/BackButton.png')} />
         </TouchableOpacity>
         <Text style={styles.headerText}>Orders</Text>

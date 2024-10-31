@@ -16,25 +16,30 @@ const HomeScreen = () => {
     // Xác định link API cho từng danh mục
     switch (category) {
       case 'Popular':
-        apiUrl = 'http://10.24.46.182:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.41.59:3000/LapTop/getListLapTop';
         break;
       case 'Trending':
-        apiUrl = 'http://10.24.46.182:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.41.59:3000/LapTop/getListLapTop';
         break;
       case 'News':
-        apiUrl = 'http://10.24.46.182:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.41.59:3000/LapTop/getListLapTop';
         break;
       case 'Sale':
-        apiUrl = 'http://10.24.46.182:3000/LapTop/getListLapTop';
+        apiUrl = 'http://10.24.41.59:3000/LapTop/getListLapTop';
         break;
       default:
-        apiUrl = 'http://10.24.46.182:3000/LapTop/getListLapTop'; // URL mặc định
+        apiUrl = 'http://10.24.41.59:3000/LapTop/getListLapTop'; // URL mặc định
     }
 
     axios
       .get(apiUrl)
       .then((response) => {
-        setLaptops(response.data.data);
+        if (response.data && response.data.data) {
+          setLaptops(response.data.data);
+        } else {
+          console.error("API không trả về dữ liệu mong đợi.");
+          setLaptops([]);
+        }
         setLoading(false);
       })
       .catch((error) => {

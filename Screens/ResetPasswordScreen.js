@@ -13,7 +13,7 @@ const ResetPasswordScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('./lock-shield.png')} style={styles.icon} />
+      {/* <Image source={require('./lock-shield.png')} style={styles.icon} /> */}
       <Text style={styles.title}>TẠO MẬT KHẨU</Text>
       <TextInput
         style={styles.input}
